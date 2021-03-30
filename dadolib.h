@@ -76,18 +76,6 @@ void six()
   Sounds(6);
 }
 
-void seven()
-{
-  digitalWrite(LedArribaIzquierda, HIGH);
-  digitalWrite(LedArribaCentro, HIGH);
-  digitalWrite(LedArribaDerecha, HIGH);
-  digitalWrite(LedCentro, HIGH);
-  digitalWrite(LedAbajoIzquiera, HIGH);
-  digitalWrite(LedAbajoCentro, HIGH);
-  digitalWrite(LedAbajoDerecha, HIGH);
-  Sounds(7);
-}
-
 void TurnOffAll()
 {
   digitalWrite(LedArribaIzquierda, LOW);

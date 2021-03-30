@@ -4,7 +4,7 @@
 Este es un proyecto de un dado simple basado en LEDs, un interruptor de botón, un buzzer y una placa de desarrollo de microcontrolador [Arduino Uno](https://store.arduino.cc/arduino-uno-rev3). Se ha construirlo en una placa de pruebas con los componentes del [Arduino Starter Kit](https://store.arduino.cc/genuino-starter-kit) previa simulación en TINKERCAD.
 
 ## Planteamiento
-El programa generar un número aleatorio entre 1 y 7 cada vez que se pulse un pulsador y encenderá los diodos LED correspondientes al número aleatorio generado como si se tratara de un dado. Además emite una serie de pitidos correspondiente al número generado.
+El programa genera un número aleatorio entre 1 y 6 cada vez que se pulse un pulsador y encenderá los diodos LED correspondientes al número aleatorio generado como si se tratara de un dado. Además emite una serie de pitidos correspondiente al número generado.
 
 Los patrones de iluminación de los LEDs para representar los número son:
 
@@ -14,9 +14,9 @@ Los LEDs correspondientes al número estarán encendidos durante un segundo tras
 
 ## La solución
 ### Hardware
-Utilizando el entorno de Circuits de TinKerCad se interconectan todos los componentes sobre la placa de desarrollo. El microcontrolador alimenta los LED a través de resistencias limitadoras de corriente de 10K ohmios desde el comun negativo de la placa. Por otra parte el ánodo de los LEDs se conectan conseutivamente a los pines digitales desde el 13 al 7
+Utilizando el entorno de Circuits de TinKerCad se interconectan todos los componentes sobre la placa de desarrollo. El microcontrolador alimenta los LED a través de resistencias limitadoras de corriente de 10K ohmios desde el común negativo de la placa. Por otra parte el ánodo de los LEDs se conectan consecutivamente a los pines digitales desde el 13 al 7
 
-Por otra parte el interruptor de botón está conectado al pin 2 digital, que está configurado para usar una resistencia pull-up de 220 ohmnios.
+Por otra parte el interruptor de botón está conectado al pin 2 digital, que está configurado para usar una resistencia pull-up de 220 ohmios.
 
 El buzzer (altavoz digital) está directamente conectado al pin 4 digital.
 <img src="./practica_dado_arduino_uno.png" width=600 align="center" />
@@ -191,7 +191,7 @@ Pulsa para ver el video:
 
 ## Generación de números casi aleatorios.
 **randomSeed()** inicializa el generador de números pseudo aleatorios, haciendo que se inicie en un punto arbitrario en su secuencia aleatoria. Esta secuencia, aunque muy larga, y al azar, es siempre la misma.
-Si es importante que la secuencia de valores generados por **randomSeed()** difiera, en sucesivas ejecuciones de un programa. Por lo que se usa una entrada bastante aletoria leida con **analogRead()** que tiene que se de un pin desconectado.
+Si es importante que la secuencia de valores generados por **randomSeed()** difiera, en sucesivas ejecuciones de un programa. Por lo que se usa una entrada bastante aleatoria leída con **analogRead()** que tiene que se de un pin desconectado.
 
 ## Generación de sonidos a partir de una señal digital
 Técnicamente tanto buzzers como altavoces son transductores electroacústicos, es decir, dispositivos que convierten señales eléctricas en sonido. La diferencia entre ambos es el fenómeno en el que basan su funcionamiento.
@@ -206,6 +206,6 @@ Un buzzer aprovecha este fenómeno para hacer vibrar una membrana al atravesar e
 
 Los buzzer son dispositivos pequeños y compactos, con alta durabilidad, y bajo consumo eléctrico. Por contra, la calidad de sonido es reducida.
 
-Para su uso con una placa como esta. Utilizaremos una de las salidas digitales. Esto significa que el sonido sólo lo vamos a poder modificar en su frecuencia pero no en su amplitud ya que el voltaje de salida no es modificable. Pero el tono si será modificable en función de onda cuadrada que generemos en La salida. La frecuencia de cambio de la señal de 0 a 1 que programemos identificará este tono y su duración.
+Para su uso con una placa como esta. Utilizaremos una de las salidas digitales. Esto significa que el sonido sólo lo vamos a poder modificar en su frecuencia pero no en su amplitud ya que el voltaje de salida no es modificable. Pero el tono si será modificable en función de una onda cuadrada que generemos en La salida. La frecuencia de cambio de la señal de 0 a 1 que programemos identificará este tono y su duración.
 
-<img src="./how-it-works-piezo-buzzer-music.gif" align="center" />
+<img src="./how-it-works-piezo-buzzer-music.gif" width=400 align="center" />

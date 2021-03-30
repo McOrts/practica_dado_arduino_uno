@@ -184,28 +184,28 @@ void TurnOffAll()
 
 ```
 ### Resultado
-
+Pulsa para ver el video:
 [![Video del montaje real](https://raw.githubusercontent.com/McOrts/practica_dado_arduino_uno/main/practica_dado_arduino_uno_real.jpg)](https://youtu.be/Z49DEIchQN4)
 
 ## ¿Qué hemos aprendido?
 
 ## Generación de números casi aleatorios.
-randomSeed() inicializa el generador de números pseudo aleatorios, haciendo que se inicie en un punto arbitrario en su secuencia aleatoria. Esta secuencia, aunque muy larga, y al azar, es siempre la misma.
-Si es importante que la secuencia de valores generados por randomSeed() difiera, en sucesivas ejecuciones de un programa. Por lo que se usa una entrada bastante aletoria leida con analogRead() que tiene que se de un pin desconectado.
+**randomSeed()** inicializa el generador de números pseudo aleatorios, haciendo que se inicie en un punto arbitrario en su secuencia aleatoria. Esta secuencia, aunque muy larga, y al azar, es siempre la misma.
+Si es importante que la secuencia de valores generados por **randomSeed()** difiera, en sucesivas ejecuciones de un programa. Por lo que se usa una entrada bastante aletoria leida con **analogRead()** que tiene que se de un pin desconectado.
 
 ## Generación de sonidos a partir de una señal digital
 Técnicamente tanto buzzers como altavoces son transductores electroacústicos, es decir, dispositivos que convierten señales eléctricas en sonido. La diferencia entre ambos es el fenómeno en el que basan su funcionamiento.
 
 Los buzzer son transductores piezoeléctricos. Los materiales piezoeléctricos tiene la propiedad especial de variar su volumen al ser atravesados por corrientes eléctricas.
 
-<img src="./>arduino-buzzer-funcionamiento.png" align="center" />
+<img src="./arduino-buzzer-funcionamiento.png" align="center" />
 
 Un buzzer aprovecha este fenómeno para hacer vibrar una membrana al atravesar el material piezoeléctrico con una señal eléctrica.
 
-<img src="./>arduino-buzzer-funcionamiento2.png" align="center" />
+<img src="./arduino-buzzer-funcionamiento2.png" align="center" />
 
 Los buzzer son dispositivos pequeños y compactos, con alta durabilidad, y bajo consumo eléctrico. Por contra, la calidad de sonido es reducida.
 
 Para su uso con una placa como esta. Utilizaremos una de las salidas digitales. Esto significa que el sonido sólo lo vamos a poder modificar en su frecuencia pero no en su amplitud ya que el voltaje de salida no es modificable. Pero el tono si será modificable en función de onda cuadrada que generemos en La salida. La frecuencia de cambio de la señal de 0 a 1 que programemos identificará este tono y su duración.
 
-<img src="./>how-it-works-piezo-buzzer-music.gif" align="center" />
+<img src="./how-it-works-piezo-buzzer-music.gif" align="center" />

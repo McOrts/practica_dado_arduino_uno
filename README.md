@@ -1,25 +1,39 @@
+# ARDUINO: INTRODUCCIÓN
 # Práctica con LEDs, pulsador y altavoz
-A partir de diodos LED, un pulsador y una plataforma Arduino Uno debemos desarrollar un programa que haga lo siguiente:
-Generar un número aleatorio entre 1 y 6 (buscar información sobre la función random( ) de Arduino) cada vez que se pulse un pulsador.
-Configurar un sistema de diodos LED con la siguiente estructura:
 
-		LED1			LED2			LED3
+Este es un proyecto de un dado simple basado en LEDs, un interruptor de botón, un buzzer y una placa de desarrollo de microcontrolador [Arduino Uno](https://store.arduino.cc/arduino-uno-rev3). Se ha construirlo en una placa de pruebas con los componentes del [Arduino Starter Kit](https://store.arduino.cc/genuino-starter-kit) previa simulación en TINKERCAD.
 
+## Planteamiento
+El programa generar un número aleatorio entre 1 y 7 cada vez que se pulse un pulsador y encenderá los diodos LED correspondientes al número aleatorio generado como si se tratara de un dado. Además emite una serie de pitidos correspondiente al número generado.
 
-					LED4
+Los patrones de iluminación de los LEDs para representar los número son:
 
+<img src="./LEDs_caras_dado.jpg" align="center" />
 
-		LED5			LED6			LED7
+Los LEDs correspondientes al número estarán encendidos durante un segundo tras la secuencia de pitidos. Pasado este tiempo se deben apagar los diodos LED automáticamente y quedarse a la espera de que se vuelva a pulsar el pulsador.
 
-Programar la placa Arduino Uno para que se enciendan los diodos LED correspondientes al número aleatorio generado como si se tratara de un dado. Así, si el número aleatorio fuera el 3, los diodos LED encendidos serían:
+## La solución
+### Hardware
+Utilizando el entorno de Circuits de TinKerCad se interconectan todos los componentes sobre la placa de desarrollo. El microcontrolador alimenta los LED a través de resistencias limitadoras de corriente de 10K ohmios desde el comun negativo de la placa. Por otra parte el ánodo de los LEDs se conectan conseutivamente a los pines digitales desde el 13 al 7
 
+Por otra parte el interruptor de botón está conectado al pin 2 digital, que está configurado para usar una resistencia pull-up de 220 ohmnios.
 
-		LED1			LED2			LED3
+El buzzer (altavoz digital) está directamente conectado al pin 4 digital.
 
+<img src="./practica_dado_arduino_uno.png" width=600 align="center" />
 
-					LED4
+### Software
+El programa espera hasta que se presione el botón. En el primer instante del botón pulsado, el programa se genera un número semi-aleatorio. Y este número es el argumento de una función que se encarga de llamar a las rutinas que encienden los LEDs correspondientes al número generado. En cascada se llama también a otra función que emite los pitidos correspondientes al número.
 
+Se divide el código en dos bloques:
+* Programa principal con la definición de variables, inicialización y bucle principal.
+* Configuración. Constantes y rutinas para mostrar números y emitir los pitidos.
 
-		LED5			LED6			LED7
+## ¿Qué hemos aprendido?
 
-El tiempo que deben estar encendidos será un segundo (busca información sobre la función delay ( ) de Arduino). Pasado este tiempo se deben apagar los diodos LED automáticamente y quedarse a la espera de que se vuelva a pulsar el pulsador.
+## Generación de números casi aleatorios.
+randomSeed() inicializa el generador de números pseudo aleatorios, haciendo que se inicie en un punto arbitrario en su secuencia aleatoria. Esta secuencia, aunque muy larga, y al azar, es siempre la misma.
+Si es importante que la secuencia de valores generados por randomSeed() difiera, en sucesivas ejecuciones de un programa. Por lo que se usa una entrada bastante aletoria leida con analogRead() que tiene que se de un pin desconectado.
+
+## Generación de sonidos a partir de una señal digital
+
